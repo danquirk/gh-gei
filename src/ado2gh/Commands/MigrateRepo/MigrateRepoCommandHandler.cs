@@ -1,5 +1,4 @@
 ﻿using System;
-using OctoshiftCLI.Models;
 using System.Threading.Tasks;
 using OctoshiftCLI.Commands;
 using OctoshiftCLI.Extensions;

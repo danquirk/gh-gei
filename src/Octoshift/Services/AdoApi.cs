@@ -777,8 +777,9 @@ public class AdoApi
         return dataProviders[dataProviderKey] is not JObject dataProvider ? null : (string)dataProvider["errorMessage"];
     }
 
-    public virtual async Task<Newtonsoft.Json.Linq.JArray> GetBranchPolicyConfigurations(string org,string teamProject,string repoId,string refName){var url=$"{_adoBaseUrl}/{org.EscapeDataString()}/{teamProject.EscapeDataString()}/_apis/policy/configurations?repositoryId={repoId.EscapeDataString()}&refName={refName.EscapeDataString()}&api-version=7.0";var response=await _client.GetAsync(url);var data=Newtonsoft.Json.Linq.JObject.Parse(response);return (Newtonsoft.Json.Linq.JArray)data["value"] ?? new Newtonsoft.Json.Linq.JArray();}
-    public virtual async Task<string> GetRepoDefaultBranch(string org,string teamProject,string repo){var url=$"{_adoBaseUrl}/{org.EscapeDataString()}/{teamProject.EscapeDataString()}/_apis/git/repositories/{repo.EscapeDataString()}?api-version=7.0";var response=await _client.GetAsync(url);var data=Newtonsoft.Json.Linq.JObject.Parse(response);var branch=(string)data["defaultBranch"];if(string.IsNullOrWhiteSpace(branch)) return "main";return branch;}
+    public virtual async Task<Newtonsoft.Json.Linq.JArray> GetBranchPolicyConfigurations(string org, string teamProject, string repoId, string refName) { var url = $"{_adoBaseUrl}/{org.EscapeDataString()}/{teamProject.EscapeDataString()}/_apis/policy/configurations?repositoryId={repoId.EscapeDataString()}&refName={refName.EscapeDataString()}&api-version=7.0"; var response = await _client.GetAsync(url); var data = Newtonsoft.Json.Linq.JObject.Parse(response); return (Newtonsoft.Json.Linq.JArray)data["value"] ?? []; }
+    public virtual async Task<string> GetRepoDefaultBranch(string org, string teamProject, string repo) { var url = $"{_adoBaseUrl}/{org.EscapeDataString()}/{teamProject.EscapeDataString()}/_apis/git/repositories/{repo.EscapeDataString()}?api-version=7.0"; var response = await _client.GetAsync(url); var data = Newtonsoft.Json.Linq.JObject.Parse(response); var branch = (string)data["defaultBranch"]; return string.IsNullOrWhiteSpace(branch) ? "main" : branch;
+    }
 
     private async Task<bool> HasPermission(string org, string securityNamespaceId, int permission)
     {

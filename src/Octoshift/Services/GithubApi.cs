@@ -1119,10 +1119,11 @@ public class GithubApi
     {
         var url = $"{_apiUrl}/repos/{org.EscapeDataString()}/{repo.EscapeDataString()}/rulesets";
         var rulesets = await _client.GetAllAsync(url)
-            .Select(r => {
+            .Select(r =>
+            {
                 var includes = ((JArray)r["target"]?["conditions"]?["ref_name"]?["includes"])?.Select(p => (string)p) ?? Enumerable.Empty<string>();
                 var prRule = ((JArray)r["rules"])?.FirstOrDefault(rule => (string)rule["type"] == "pull_request");
-                int? reviewers = (int?)prRule?["parameters"]?["required_approving_review_count"];
+                var reviewers = (int?)prRule?["parameters"]?["required_approving_review_count"];
                 var statusChecks = ((JArray)r["rules"])?.Where(rule => (string)rule["type"] == "required_status_checks")
                     .SelectMany(rule => ((JArray)rule["parameters"]?["required_status_checks"])?.Select(c => (string)c) ?? Enumerable.Empty<string>())
                     .Distinct() ?? Enumerable.Empty<string>();
@@ -1182,7 +1183,7 @@ public class GithubApi
                 parameters = new { required_status_checks = def.RequiredStatusChecks }
             });
         }
-        if(def.RequiredPullRequestBodyPatterns!=null && def.RequiredPullRequestBodyPatterns.Any())
+        if (def.RequiredPullRequestBodyPatterns != null && def.RequiredPullRequestBodyPatterns.Any())
         {
             rules.Add(new
             {

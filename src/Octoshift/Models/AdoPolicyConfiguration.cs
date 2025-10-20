@@ -1,7 +1,6 @@
-namespace OctoshiftCLI.Models;
 using System.Collections.Generic;
 
-
+namespace OctoshiftCLI.Models;
 public enum AdoPolicyType { MinimumReviewers, BuildValidation, WorkItemLinking, CommentResolution }
 
 public class AdoPolicyConfiguration

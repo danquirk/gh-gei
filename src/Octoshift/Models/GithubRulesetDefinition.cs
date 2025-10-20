@@ -1,7 +1,6 @@
-namespace OctoshiftCLI.Models;
 using System.Collections.Generic;
 
-
+namespace OctoshiftCLI.Models;
 public class GithubRulesetDefinition
 {
     public string Name { get; init; }
