@@ -76,11 +76,3 @@ public class DefaultBranchRulesetServiceTests
         api.Verify(a => a.UpdateRepoRuleset(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<GithubRulesetDefinition>()), Times.Never);
     }
 }
-
-
-
-
-
-
-
-
