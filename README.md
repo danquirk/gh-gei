@@ -2,7 +2,6 @@
 
 [![Actions Status: CI](https://github.com/github/gh-gei/workflows/CI/badge.svg)](https://github.com/github/gh-gei/actions?query=workflow%3ACI)
 
-
 The [GitHub Enterprise Importer](https://docs.github.com/en/migrations/using-github-enterprise-importer) (GEI, formerly Octoshift) is a highly customizable API-first migration offering designed to help you move your enterprise to GitHub Enterprise Cloud. The GEI-CLI wraps the GEI APIs as a cross-platform console application to simplify customizing your migration experience.
 
 > GEI is generally available for repository migrations originating from Azure DevOps or GitHub that target GitHub Enterprise Cloud. It is in public beta for repository migrations from BitBucket Server and Data Center to GitHub Enterprise Cloud.
@@ -99,35 +98,6 @@ When the CLI is launched, it logs a warning if there are any ongoing [GitHub inc
 
 See [Contributing](CONTRIBUTING.md) for more info on how to get involved.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Enabling GitHub Rulesets for Default Branch Policy Migration (ADO -> GH)
 
 Use `--enable-rulesets` (or set env `OCTOSHIFT_ENABLE_RULESETS=true`) with `gh ado2gh` to migrate default branch policies into modern GitHub rulesets instead of legacy branch protection.
@@ -135,18 +105,6 @@ Use `--enable-rulesets` (or set env `OCTOSHIFT_ENABLE_RULESETS=true`) with `gh a
 Example:
 > `gh ado2gh generate-script --ado-org ORG --github-org ORG --enable-rulesets`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## GitHub Ruleset Migration (Experimental)
 Use --enable-rulesets (or set OCTOSHIFT_ENABLE_RULESETS=1) to migrate default branch ADO policies (reviewers, status checks, work item linking, comment resolution via PR body regex) into a GitHub ruleset named ado-default-branch-policies. Re-run safely for idempotent updates. If the ruleset API is unavailable or your token lacks permission, the tool logs a warning and continues without applying a ruleset.
+
